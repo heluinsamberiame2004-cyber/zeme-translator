@@ -1,19 +1,17 @@
-let GRAMMAR = {};
-let DICT = {};
-let ALPHABET = [];
-
 // Load JSON files
 Promise.all([
-  fetch("grammar_v2.json")
-fetch("dictionary.json")
-fetch("alphabet.json")
-
-]).then(([g, d, a]) => {
+  fetch("grammar_v2.json"),
+  fetch("dictionary.json"),
+  fetch("alphabet.json")
+])
+.then(responses => Promise.all(responses.map(r => r.json())))
+.then(([g, d, a]) => {
   GRAMMAR = g;
   DICT = d;
   ALPHABET = a.alphabet;
   console.log("Grammar, Dictionary, Alphabet loaded");
-}).catch(err => {
+})
+.catch(err => {
   console.error("Error loading JSON files:", err);
 });
 
@@ -304,4 +302,5 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Input:", input, "Output:", result);
   });
 });
+
 
