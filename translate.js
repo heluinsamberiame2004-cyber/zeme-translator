@@ -4,9 +4,10 @@ let ALPHABET = [];
 
 // Load JSON files
 Promise.all([
-  fetch("data/grammar_v2.json").then(r => r.json()),
-  fetch("data/dictionary.json").then(r => r.json()),
-  fetch("data/alphabet.json").then(r => r.json())
+  fetch("grammar_v2.json")
+fetch("dictionary.json")
+fetch("alphabet.json")
+
 ]).then(([g, d, a]) => {
   GRAMMAR = g;
   DICT = d;
@@ -303,3 +304,4 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Input:", input, "Output:", result);
   });
 });
+
